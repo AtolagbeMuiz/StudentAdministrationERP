@@ -74,13 +74,23 @@ namespace StudentAdministrationERP.Controllers
 
         public IActionResult GetStudents()
         {
-            var response = _studentService.GetStudents();
-            if (response != null)
+            var studentList = _studentService.GetStudents();
+            if (studentList.Count > 0)
             {
-                return View();
+                return View(studentList);
             }
 
             return View();
+        }
+
+        public IActionResult StudentDetails(string studentId)
+        {
+            var student = _studentService.GetStudentDetailsById(studentId);
+            if(student != null)
+            {
+                return View(student);
+            }
+            return RedirectToAction("GetStudents");
         }
     }
 }

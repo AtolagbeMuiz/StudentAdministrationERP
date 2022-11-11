@@ -51,23 +51,24 @@ namespace StudentAdministrationERP.Repository
             return students;
         }
 
-        //public List<Student> GetStudents()
-        //{
-        //    var students = _context.Student.Select(x => new Student
-        //    {
-        //        Student_Id = x.Student_Id,
-        //        FirstName = x.FirstName,
-        //        LastName = x.LastName,
-        //        DateOfBirth = x.DateOfBirth,
-        //        Email = x.Email,
-        //        PhoneNumber = x.PhoneNumber,
-        //        Degree = x.Degree,
-        //        Degree_Id = x.Degree_Id,
-        //        DateCreated = x.DateCreated,
-        //        isEnrolled = x.isEnrolled
-        //    }).ToList();
+        public Student GetStudentDetailsById(string studentId)
+        {
+            var student = _context.Student.Select(x => new Student
+            {
+                Student_Id = x.Student_Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                DateOfBirth = x.DateOfBirth,
+                Address = x.Address,
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                Degree = x.Degree,
+                Degree_Id = x.Degree_Id,
+                DateCreated = x.DateCreated,
+                isEnrolled = x.isEnrolled
+            }).Where(x => x.Student_Id == studentId).FirstOrDefault();
 
-        //    return students;
-        //}
+            return student;
+        }
     }
 }

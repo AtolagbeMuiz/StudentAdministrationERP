@@ -1,0 +1,30 @@
+﻿@model List<Student>
+
+    @if(Model != null)
+    {    
+        <div class="table-responsive" style="color: #828282;">
+
+            <table id="causes" class="table table-hover bg-light cell-border">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Date Created</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <partial name="Student_Table_Card"/>
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="text-center head-size pt-5">
+         No Student Yet
+        </div>
+    }

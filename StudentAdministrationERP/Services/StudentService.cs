@@ -30,6 +30,7 @@ namespace StudentAdministrationERP.Services
 
             //Assign this unique student ID to StudentDTO object
             studentDTO.Student_Id = studendId;
+            studentDTO.DateCreated = DateTime.Today;
 
             //Automapping the StudentDTO to the Student Entity
             var student = _mapper.Map<Student>(studentDTO);
@@ -53,6 +54,16 @@ namespace StudentAdministrationERP.Services
             if (students != null)
             {
                 return students;
+            }
+            return null;
+        }
+
+        public Student GetStudentDetailsById(string studentId)
+        {
+            var student = _studentRepo.GetStudentDetailsById(studentId);
+            if (student != null)
+            {
+                return student;
             }
             return null;
         }

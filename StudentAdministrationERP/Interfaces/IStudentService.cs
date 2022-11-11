@@ -11,5 +11,7 @@ namespace StudentAdministrationERP.Interfaces
         HttpStatusCode SaveStudentDetails(StudentDTO student);
 
         List<Student> GetStudents();
+
+        Student GetStudentDetailsById(string studentId);
     }
 }

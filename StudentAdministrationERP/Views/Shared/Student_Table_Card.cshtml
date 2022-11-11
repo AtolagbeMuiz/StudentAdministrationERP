@@ -1,0 +1,35 @@
+﻿@model List<Student>
+
+    @{
+        int i = 1;
+    }
+
+   
+    @foreach (var student in Model)
+    {
+    <tr>
+
+             @{ var id = student.Student_Id; }
+
+   
+            @*<td class="text-truncate">@ViewBag.counter</td>*@
+            <td class="text-truncate">@(i++)</td>
+            <td class="text-truncate">@student.FirstName @student.LastName</td>
+            <td class="text-truncate">@student.Email</td>
+            <td class="text-truncate">@student.PhoneNumber</td>
+            <td class="text-truncate">@student.DateCreated.ToString("dd MMMM yyyy")</td>
+            @if (@student.isEnrolled == false)
+            {
+             <td class="font-weight-bold" style="color: red">Not Enrolled</td>
+            }
+           
+            @if (@student.isEnrolled == true)
+            {
+            <td class="font-weight-bold" style="color: green">Enrolled</td>
+            }
+
+            <td class="mx-auto">
+            <a asp-route-studentId="@student.Student_Id" asp-action="StudentDetails" asp-controller="Student" class="btn view font-weight-bold" style="background: #FFDCDC; border-radius: 30px;color: #DA443D;">View</a>
+            </td>
+    </tr>
+    }
