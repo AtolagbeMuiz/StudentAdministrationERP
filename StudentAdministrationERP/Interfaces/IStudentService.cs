@@ -13,5 +13,7 @@ namespace StudentAdministrationERP.Interfaces
         List<Student> GetStudents();
 
         Student GetStudentDetailsById(string studentId);
+
+        bool UpdateStudentEnrolmentStatus(string studentId);
     }
 }

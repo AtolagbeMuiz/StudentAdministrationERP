@@ -38,6 +38,12 @@ namespace StudentAdministrationERP.Repository
             return degrees;
         }
 
+        public List<Module> GetDegreeModules(string degreeId)
+        {
+            var degreeModules = _context.Module.Where(x => x.Degree_Id == degreeId).ToList();
+            return degreeModules;
+
+        }
     }
     
 }

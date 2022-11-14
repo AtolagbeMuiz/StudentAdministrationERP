@@ -29,5 +29,15 @@ namespace StudentAdministrationERP.Services
             return null;
         }
         
+        public List<Module> GetDegreeModules(string degreeId)
+        {
+            var degreeModules = _degreeRepo.GetDegreeModules(degreeId);
+
+            if(degreeModules.Count > 0)
+            {
+                return degreeModules;
+            }
+            return null ;
+        }
     }
 }

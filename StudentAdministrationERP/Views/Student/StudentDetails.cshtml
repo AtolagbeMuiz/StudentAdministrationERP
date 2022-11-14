@@ -81,28 +81,70 @@
             </div>
 
             <div class="py-3">
-                <span>Assign Modules to Student</span>
+                <div class="font-weight-bold text-uppercase">Assign Modules to Student</div>
 
-             </div>
+            @foreach (var module in ViewBag.listOfModulesAttachedToADegree)
+            {
+                <span><label for="Module_Code">@module.Module_Code _ @module.Module_Title</label></span>
+                <input type="checkbox" id="ModuleCode" name="Module_Code" value="@module.Module_Code">
+                <br />
 
-            <div class="pb-4 pt-3">Bank Details</div>
-           @* <div class="row pb-4">
-                <div class="col-6">
-                    <div class="mb-2 d-flex flex-column">
-                        <span>Name</span>
-                        <span class="font-weight-bold">@Model.BankName</span>
-                    </div>
+            }
 
-                </div>
-                <div class="col-6">
-                    <div class="mb-2 d-flex flex-column">
-                        <span>Account Number</span>
-                        <span class="font-weight-bold">@Model.BankAccountNumber</span>
-                    </div>
-
-
-
-                </div>
-            </div>*@
+            <div class="form-group">
+                <input type="submit" id="btnEnrol" onclick="getCheckboxValue()" value="Enrol" class="btn btn-default bg-info" />
+            </div>
+             </div>         
         </div>
     </div>
+
+    <script>
+        function getCheckboxValue() {
+
+            var module = document.getElementById("ModuleCode");
+
+            if (module.checked == true) 
+            {
+                //var moduleValue = document.getElementById("ModuleCode").value;
+                var studentId = @Model.Student_Id;
+
+               console.log("student id " +studentId);
+
+                //var selectedModule = 
+                //{
+                //"Student_Id": studentId,
+                //"Module_Code": moduleValue
+                //};
+
+            var selectedModule = { 'ModuleCode': [], 'Student_Id': studentId };
+            
+            $("input:checked").each(function () {
+                selectedModule['ModuleCode'].push($(this).val());
+            });
+
+            console.log(selectedModule);
+
+                $.ajax({
+                    url: 'EnrolStudent',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    traditional : true,
+                    data: JSON.stringify(selectedModule),
+                    // passing JSON objects as comma(,) separated values
+                   // data: JSON.stringify({'selectedModuless' : selectedModule}) ,
+                    //traditional: true,
+                    success: (response) => {
+                        // response from PHP back-end PHP server
+                        //$("#resultID").show().html(response);
+                    }
+                })
+                
+            }
+           
+            else {
+               // return document.getElementById("result").innerHTML = "Select any one";
+            }
+            //return document.getElementById("result").innerHTML = "You have selected " + result + " language";
+        }
+    </script>

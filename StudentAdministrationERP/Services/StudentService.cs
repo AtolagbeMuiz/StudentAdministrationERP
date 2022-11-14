@@ -63,9 +63,25 @@ namespace StudentAdministrationERP.Services
             var student = _studentRepo.GetStudentDetailsById(studentId);
             if (student != null)
             {
+               
                 return student;
             }
             return null;
+        }
+
+        public bool UpdateStudentEnrolmentStatus(string studentId)
+        {
+            if (!String.IsNullOrEmpty(studentId))
+            {
+                var enrolmentStatusUpdated = _studentRepo.UpdateStudentEnrolmentStatus(studentId);
+
+                if(enrolmentStatusUpdated == true)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

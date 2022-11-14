@@ -40,6 +40,10 @@ namespace StudentAdministrationERP
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IDegreeRepo, DegreeRepo>();
             services.AddScoped<IDegreeService, DegreeService>();
+            services.AddScoped<IModuleRepo, ModuleRepo>();
+            services.AddScoped<IModuleService, ModuleService>();
+
+
 
             services.AddAutoMapper(typeof(Startup));
 

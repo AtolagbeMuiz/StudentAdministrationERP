@@ -70,5 +70,23 @@ namespace StudentAdministrationERP.Repository
 
             return student;
         }
+
+        public bool UpdateStudentEnrolmentStatus(string studentId)
+        {
+            if(studentId != null)
+            {
+                var student = _context.Student
+                .Where(x => x.Student_Id == studentId).FirstOrDefault();
+
+                student.isEnrolled = true;
+
+                _context.SaveChanges();
+
+                return true;
+            }
+            return false;
+           
+
+        }
     }
 }

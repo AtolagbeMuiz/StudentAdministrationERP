@@ -38,5 +38,15 @@ namespace StudentAdministrationERP.Controllers
                 throw;
             }
         }
+
+        //public IActionResult GetDegreeModules(string degreeId)
+        //{
+        //    var listOfModulesAttachedToADegree = this._degreeService.GetDegreeModules(degreeId);
+
+        //    if(listOfModulesAttachedToADegree != null)
+        //    {
+        //        ret
+        //    }
+        //}
     }
 }

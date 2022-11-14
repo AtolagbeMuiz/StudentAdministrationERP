@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentAdministrationERP.Data;
 
 namespace StudentAdministrationERP.Migrations
 {
     [DbContext(typeof(StudentAdministrationERPDbContext))]
-    partial class StudentAdministrationERPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221114000758_AddedEnromentTable")]
+    partial class AddedEnromentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,15 +46,18 @@ namespace StudentAdministrationERP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("DtudentStudent_Id")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("Module_Code")
                         .HasColumnType("int");
 
                     b.Property<string>("Student_Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Enrolment_Id");
 
-                    b.HasIndex("Student_Id");
+                    b.HasIndex("DtudentStudent_Id");
 
                     b.ToTable("Enrolment");
                 });
@@ -120,9 +125,9 @@ namespace StudentAdministrationERP.Migrations
 
             modelBuilder.Entity("StudentAdministrationERP.Models.Enrolment", b =>
                 {
-                    b.HasOne("StudentAdministrationERP.Models.Student", "Student")
+                    b.HasOne("StudentAdministrationERP.Models.Student", "Dtudent")
                         .WithMany()
-                        .HasForeignKey("Student_Id");
+                        .HasForeignKey("DtudentStudent_Id");
                 });
 
             modelBuilder.Entity("StudentAdministrationERP.Models.Module", b =>

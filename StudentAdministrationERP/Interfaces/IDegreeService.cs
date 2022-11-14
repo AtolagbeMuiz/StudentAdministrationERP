@@ -9,5 +9,7 @@ namespace StudentAdministrationERP.Interfaces
         void CreateDegree(Degree degree);
 
         List<DegreeDTO> GetDegrees();
+
+        List<Module> GetDegreeModules(string degreeId);
     }
 }
