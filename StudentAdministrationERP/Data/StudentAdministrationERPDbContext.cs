@@ -17,10 +17,6 @@ namespace StudentAdministrationERP.Data
         public DbSet<Module> Module { get; set; }
         public DbSet<Enrolment> Enrolment { get; set; }
 
-
-        //public async Task<int> SaveChangesAsync()
-        //{
-        //    return await base.SaveChangesAsync();
-        //}
+        public DbSet<Assessment> Assessment { get; set }
     }
 }

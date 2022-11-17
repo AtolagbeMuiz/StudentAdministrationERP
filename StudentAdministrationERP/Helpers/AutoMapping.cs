@@ -10,6 +10,7 @@ namespace StudentAdministrationERP.Helpers
         public AutoMapping()
         {
             CreateMap<StudentDTO, Student>().ReverseMap();
+            CreateMap<ModuleDTO, Module>().ReverseMap();
         }
     }
 }

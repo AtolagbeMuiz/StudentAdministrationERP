@@ -1,22 +1,25 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using StudentAdministrationERP.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace StudentAdministrationERP.Models
+namespace StudentAdministrationERP.DTOs
 {
-    public class Module
+    public class ModuleDTO
     {
-        [Key]
         public Guid Module_Id { get; set; }
+
+        [Required]
         public int Module_Code { get; set; }
-        public string Module_Title { get; set; } 
+
+        [Required]
+        public string Module_Title { get; set; }
 
         [ForeignKey("Degree")]
         public string Degree_Id { get; set; }
         public bool isCompulsory { get; set; }
 
-        [IgnoreDataMember]
-        public virtual Degree Degree { get; set; }
+       
     }
 }

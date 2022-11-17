@@ -82,18 +82,44 @@
 
             <div class="py-3">
                 <div class="font-weight-bold text-uppercase">Assign Modules to Student</div>
-
-            @foreach (var module in ViewBag.listOfModulesAttachedToADegree)
+            
+            @if(Model.isEnrolled == false)
             {
-                <span><label for="Module_Code">@module.Module_Code _ @module.Module_Title</label></span>
-                <input type="checkbox" id="ModuleCode" name="Module_Code" value="@module.Module_Code">
-                <br />
+                @foreach (var module in ViewBag.listOfModulesAttachedToADegree)
+                {
+                    @if (module.isCompulsory != true)
+                    {
+                        <span><label for="Module_Code">@module.Module_Code _ @module.Module_Title</label></span>
+                        <input type="checkbox" id="ModuleCode" name="Module_Code" value="@module.Module_Code">
+                        <br />
+                    }
+                    else
+                    {
+                        <span><label for="Module_Code">@module.Module_Code _ @module.Module_Title</label></span>
+                        <input type="checkbox" id="ModuleCode" name="Module_Code" disabled="disabled" value="@module.Module_Code" checked>
+                        <input name="Module_Code" type="hidden" value="@module.Module_Code" />
+                        <br />
+                    }
 
+
+                }
             }
-
-            <div class="form-group">
-                <input type="submit" id="btnEnrol" onclick="getCheckboxValue()" value="Enrol" class="btn btn-default bg-info" />
-            </div>
+            else
+            {
+                @foreach(var enrolledModule in ViewBag.listOfModulesEnrolledByStudent)
+                {
+                    <span><label for="Module_Code">@enrolledModule.Module_Code _ @enrolledModule.Module_Title</label></span>
+                    <br />
+                }
+            }
+           
+            @if(Model.isEnrolled == false)
+            {
+                <div class="form-group">
+                    <input type="submit" id="btnEnrol" onclick="getCheckboxValue()" value="Enrol" class="btn btn-default bg-info" />
+                </div>
+            }
+            
              </div>         
         </div>
     </div>

@@ -91,11 +91,22 @@ namespace StudentAdministrationERP.Controllers
             var student = _studentService.GetStudentDetailsById(studentId);
             if(student != null)
             {
-                //Go to fetch the modules associated to the student's degree
-                var listOfModulesAttachedToADegree = _degreeService.GetDegreeModules(student.Degree_Id);
-                ViewBag.listOfModulesAttachedToADegree = listOfModulesAttachedToADegree;
+                if(student.isEnrolled == false) 
+                {
+                    //Go to fetch the modules associated to the student's degree
+                    var listOfModulesAttachedToADegree = _degreeService.GetDegreeModules(student.Degree_Id);
+                    ViewBag.listOfModulesAttachedToADegree  = listOfModulesAttachedToADegree;
 
-                return View(student);
+                    return View(student);
+                }
+                else
+                {
+                    var modulesEnrolledbyStudent = _moduleService.GetEnrolledModulesByStudentId(student.Student_Id);
+                    ViewBag.listOfModulesEnrolledByStudent = modulesEnrolledbyStudent;
+                    return View(student);
+
+                }
+
             }
             return RedirectToAction("GetStudents");
         }
