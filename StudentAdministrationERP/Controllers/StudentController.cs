@@ -35,6 +35,7 @@ namespace StudentAdministrationERP.Controllers
 
                 if(degrees != null)
                 {
+                    //Assigns the list of degree to be populated the degree dropdown into a ViewBag
                     ViewBag.Degrees = new SelectList(degrees, "Degree_Id", "Degree_Title");
                     return View();
                 }
@@ -54,6 +55,7 @@ namespace StudentAdministrationERP.Controllers
         {
             try
             {
+                //checks if the Student Model is Valid
                 if (ModelState.IsValid)
                 {
               
@@ -91,6 +93,7 @@ namespace StudentAdministrationERP.Controllers
             var student = _studentService.GetStudentDetailsById(studentId);
             if(student != null)
             {
+                //check if the student is enrolled
                 if(student.isEnrolled == false) 
                 {
                     //Go to fetch the modules associated to the student's degree
@@ -101,6 +104,7 @@ namespace StudentAdministrationERP.Controllers
                 }
                 else
                 {
+                    //goes to fetch modules that the student enroled for
                     var modulesEnrolledbyStudent = _moduleService.GetEnrolledModulesByStudentId(student.Student_Id);
                     ViewBag.listOfModulesEnrolledByStudent = modulesEnrolledbyStudent;
                     return View(student);
@@ -111,6 +115,12 @@ namespace StudentAdministrationERP.Controllers
             return RedirectToAction("GetStudents");
         }
 
+
+        /// <summary>
+        ///   ---->  Action Method to enrol a student on the selcted modules
+        /// </summary>
+        /// <param name="selectedModule"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult EnrolStudent([FromBody] SelectedModule selectedModule)//string[] ModuleCode, string Student_Id)
         {

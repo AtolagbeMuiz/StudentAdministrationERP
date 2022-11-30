@@ -39,14 +39,15 @@ namespace StudentAdministrationERP.Controllers
             }
         }
 
-        //public IActionResult GetDegreeModules(string degreeId)
-        //{
-        //    var listOfModulesAttachedToADegree = this._degreeService.GetDegreeModules(degreeId);
-
-        //    if(listOfModulesAttachedToADegree != null)
-        //    {
-        //        ret
-        //    }
-        //}
+        public IActionResult GetDegreeModules(string selectedDegree)
+        {
+           var modulesAssignedToDegree = _degreeService.GetDegreeModules(selectedDegree);
+            if(modulesAssignedToDegree != null)
+            {
+                ViewBag.DegreeModules = modulesAssignedToDegree;
+            
+            }
+            return null;
+        }
     }
 }

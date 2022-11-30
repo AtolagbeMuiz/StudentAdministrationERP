@@ -42,6 +42,9 @@ namespace StudentAdministrationERP
             services.AddScoped<IDegreeService, DegreeService>();
             services.AddScoped<IModuleRepo, ModuleRepo>();
             services.AddScoped<IModuleService, ModuleService>();
+            services.AddScoped<IAssessmentService, AssessmentService>();
+            services.AddScoped<IAssessmentRepo, AssessmentRepo>();
+
 
 
 

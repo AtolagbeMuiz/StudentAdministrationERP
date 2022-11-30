@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentAdministrationERP.Data;
 
 namespace StudentAdministrationERP.Migrations
 {
     [DbContext(typeof(StudentAdministrationERPDbContext))]
-    partial class StudentAdministrationERPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221117193450_AddeddAssesmentTable")]
+    partial class AddeddAssesmentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
