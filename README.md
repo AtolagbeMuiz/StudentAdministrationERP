@@ -35,48 +35,20 @@ The project also contains the DTOs folder, which contains entity model classes r
 The project also contains Models folder which contains classes i.e. entities that is a replica of the database entities.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ARCHITECTURE LAYER DESIGN
 
 
-![](StudentAdministratioERP/Images/ArchitectureLayer.png)
+![](StudentAdministrationERP/Images/ArchitectureLayer.png)
 
 
 
-![](StudentAdministratioERP/Images/Blankdiagram.png)
-
-
-
-
-
-
-
-
-
-
+![](StudentAdministrationERP/Images/Blankdiagram.png)
 
 
 
 ENTITY RELATIONSHIP DIAGRAM (ERD)
 
-![](StudentAdministratioERP/Images/StudentAdministrationERP.png)
+![](StudentAdministrationERP/Images/StudentAdministrationERP.png)
 
 The ERD depicts the Database (data storage) design, The relationship between the database entities such as One-Many relationship, etc. The ERD relationship below can be interpreted as follows: 
 A student can only be registered, to one and only one degree and a degree program can contain zero or many Student(s).
